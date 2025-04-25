@@ -1,11 +1,11 @@
-import { Router } from 'express'
 import axios from 'axios'
+import express from 'express'
 
-const router = Router()
+const recipesRouter = express.Router()
 
 const API_URL = 'https://www.themealdb.com/api/json/v1/1'
 
-router.get('/', async (req, res) => {
+recipesRouter.get('/', async (req, res) => {
 	const { ingredient, area, category } = req.query
 
 	try {
@@ -19,14 +19,26 @@ router.get('/', async (req, res) => {
 			url = `${API_URL}/filter.php?c=${category}`
 		}
 
-		const response = await axios.get(url)
+		console.log('➡️ Fetching from external API:', url)
+
+		const response = await axios.get(url, {
+			headers: {
+				'User-Agent': 'Mozilla/5.0',
+			},
+		})
 		res.json(response.data)
-	} catch (error) {
-		res.status(500).json({ error: 'Failed to fetch recipes' })
+	} catch (error: unknown) {
+		if (axios.isAxiosError(error)) {
+			console.error('❌ External API Error:', error.response?.status, error.message)
+			res.status(500).json({ error: error.message })
+		} else {
+			console.error('❌ Unknown error:', error)
+			res.status(500).json({ error: 'Unexpected error' })
+		}
 	}
 })
 
-router.get('/:id', async (req, res) => {
+recipesRouter.get('/:id', async (req, res) => {
 	const { id } = req.params
 
 	try {
@@ -37,4 +49,4 @@ router.get('/:id', async (req, res) => {
 	}
 })
 
-export default router
+export default recipesRouter
