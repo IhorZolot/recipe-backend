@@ -25,32 +25,30 @@ npm run build
 npm start
 ```
 ### Структура проєкту
-```bash
+```
 /src
  ├── index.ts          ← основний сервер Express
  ├── filtersRouter.ts  ← маршрути для фільтрів (інгредієнти, категорії, кухні)
  └── recipesRouter.ts  ← маршрути для рецептів (пошук, деталі)
  ```
-
 ### API Ендпоінти
 ##### Filters
+```
 GET /filters/ingredients → список інгредієнтів
 GET /filters/areas → список кухонь
 GET /filters/categories → список категорій
+```
 ##### Recipes
 GET /recipes → список рецептів
 #### Параметри запиту (query):
+```
 ingredient
 area
 category
 GET /recipes/:id → деталі рецепта за id
-
+```
 ### Залежності
 
-express
-axios
-cors
-typescript
-nodemon
+express  axios  cors  typescript  nodemon
 
 [Ihor Zolotoverkh](https://www.linkedin.com/in/ihor-zolotoverkh)
