@@ -7,8 +7,8 @@
 ### Встановлення
 ##### Клонування репозиторію:
 ```bash
-git clone https://github.com/your-repository/Recipe Backend.git
-cd Recipe Backend
+git clone https://github.com/your-repository/recipe-backend.git
+cd recipe-backend
 ```
 ##### Встановлення залежностей
 ```bash
