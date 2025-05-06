@@ -25,11 +25,12 @@ npm run build
 npm start
 ```
 ### Структура проєкту
-
+```bash
 /src
  ├── index.ts          ← основний сервер Express
  ├── filtersRouter.ts  ← маршрути для фільтрів (інгредієнти, категорії, кухні)
  └── recipesRouter.ts  ← маршрути для рецептів (пошук, деталі)
+ ```
 
 ### API Ендпоінти
 ##### Filters
