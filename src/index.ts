@@ -3,7 +3,7 @@ import cors from 'cors'
 import recipesRouter from './routes/recipes'
 import filtersRouter from './routes/filters'
 
-const PORT = 5050
+const PORT = process.env.PORT || 3001;
 const app = express()
 app.use(cors())
 

@@ -19,8 +19,6 @@ recipesRouter.get('/', async (req, res) => {
 			url = `${API_URL}/filter.php?c=${category}`
 		}
 
-		console.log('➡️ Fetching from external API:', url)
-
 		const response = await axios.get(url, {
 			headers: {
 				'User-Agent': 'Mozilla/5.0',
